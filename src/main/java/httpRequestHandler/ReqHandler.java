@@ -1,5 +1,4 @@
 package httpRequestHandler;
-
 import okhttp3.*;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -32,19 +31,32 @@ public class ReqHandler {
 				.method("GET", null)
 				.build();
 		Response response = client.newCall(request).execute();
-
 		return response.body();
-
 	}
 
 	public static void main(String[] args) throws IOException {
+		
+//		Json get from the Response body
+		System.out.println("Main Array : "+ playerList("MCG").string());
+		
+//		Add Response body to the Json Array
+		JSONArray jarray=new JSONArray(playerList("MCG").string());
+
+
+//		Iterate on jArray to get Each players Details
+		for (int i = 0; i <jarray.length() ; i++) {
+			
+//			Get Each Player Object 
+			JSONObject jsonObject = jarray.getJSONObject(i);
+//			Print Each players Details get from the object
+			System.out.print(jsonObject.getInt("playerID"));
+			System.out.print("\t\t"+jsonObject.getString("playerName"));
+			System.out.println();
+			
+//			If you want you can create a Player Class and put all these details in to player type array list display those in the UI
+		}
 
 		addShot(1,"RCG", 1, 6, 100.0f, 20.5f);
 		String jsonObject=playerList("MCG").string();
-		JSONObject jObject=new JSONObject(jsonObject);
-		JSONArray jarray=jObject.getJSONArray("");
-
-//		System.out.println(playerList("MCG").string());
-
 	}
 }
