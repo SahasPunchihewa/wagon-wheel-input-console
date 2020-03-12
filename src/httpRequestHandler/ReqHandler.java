@@ -1,4 +1,5 @@
 package httpRequestHandler;
+<<<<<<< HEAD
 
 public class ReqHandler{
 
@@ -23,5 +24,16 @@ public class ReqHandler{
 			.build();
 		Response response = client.newCall(request).execute();
 		return response;
+=======
+public class ReqHandler extends MCG.WWheal{
+
+	public static void main(String[] args)
+	{
+		// TODO Auto-generated method stub
+	}
+	public static void nama()
+	{
+		System.out.println(xscore);
+>>>>>>> 4c8341a2ade5675507e2050a1f5d52cafe4d9596
 	}
 }
