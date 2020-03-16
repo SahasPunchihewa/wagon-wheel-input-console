@@ -86,18 +86,18 @@ public class WWheal extends JFrame implements MouseMotionListener,ActionListener
 			}
 		}
 		);
-		selectui(f2);
-		//mainui(f1);
+		//selectui(f2);
+		mainui(f1);
 	}
 	public void itemStateChanged(ItemEvent f) 
 	{
 		if(f.getItemSelectable()==rbg)
 		{
-			System.out.println("MCG 1");
-		}
-		if(f.getItemSelectable()==rbg)
-		{
-			System.out.println("RCG 1");
+			if(f.getItemSelectable()==r1)
+			{
+				System.out.println("MCG 1");
+			}
+			//System.out.println("MCG 1");
 		}
 	}
 	public void actionPerformed(ActionEvent a) 
