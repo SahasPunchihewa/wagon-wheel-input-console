@@ -49,6 +49,9 @@ public class ReqHandler extends main.java.MCG.WWheal
 			//Print Each players Details get from the object
 			System.out.print(jsonObject.getInt("playerID"));
 			System.out.print("\t\t"+jsonObject.getString("playerName"));
+			
+			playerlist[i]=jsonObject.getString("PlayerName");
+			
 			System.out.println();			
 			//If you want you can create a Player Class and put all these details in to player type array list display those in the UI
 		}

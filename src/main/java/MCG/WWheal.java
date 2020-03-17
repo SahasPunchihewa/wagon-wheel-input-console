@@ -15,9 +15,11 @@ public class WWheal extends JFrame implements MouseMotionListener,ActionListener
 	static Rectangle rect;
 	static int pid,psession,sshot,xscore,yscore,sx,sy;
 	static String pTeam=" ";
+	protected static String playerlist[]=new String[10];
 	
 	public WWheal()
 	{
+		System.out.println(psession);
 		System.out.println("Started");
 		ge=GraphicsEnvironment.getLocalGraphicsEnvironment();
 		screen=ge.getDefaultScreenDevice();
@@ -68,10 +70,10 @@ public class WWheal extends JFrame implements MouseMotionListener,ActionListener
 		b5.addActionListener(this);
 		b6.addActionListener(this);
 		b7.addActionListener(this);
-		r1.addItemListener(this);
-		r2.addItemListener(this);
-		r3.addItemListener(this);
-		r4.addItemListener(this);
+		r1.addActionListener(this);
+		r2.addActionListener(this);
+		r3.addActionListener(this);
+		r4.addActionListener(this);
 		l1.addMouseListener(new MouseAdapter()
 		{
 			public void mousePressed(MouseEvent e)
@@ -89,17 +91,7 @@ public class WWheal extends JFrame implements MouseMotionListener,ActionListener
 		//selectui(f2);
 		mainui(f1);
 	}
-	public void itemStateChanged(ItemEvent f) 
-	{
-		if(f.getItemSelectable()==rbg)
-		{
-			if(f.getItemSelectable()==r1)
-			{
-				System.out.println("MCG 1");
-			}
-			//System.out.println("MCG 1");
-		}
-	}
+	
 	public void actionPerformed(ActionEvent a) 
 	{
 		if(a.getSource()==b1)
@@ -107,39 +99,54 @@ public class WWheal extends JFrame implements MouseMotionListener,ActionListener
 			sshot=1;
 			System.out.println(sshot);
 		}
-		else if(a.getSource()==b2)
+		if(a.getSource()==b2)
 		{
 			sshot=2;
 			System.out.println(sshot);
 		}
-		else if(a.getSource()==b3)
+		if(a.getSource()==b3)
 		{
 			sshot=3;
 			System.out.println(sshot);
 		}
-		else if(a.getSource()==b4)
+		if(a.getSource()==b4)
 		{
 			sshot=4;
 			System.out.println(sshot);
 		}
-		else if(a.getSource()==b5)
+		if(a.getSource()==b5)
 		{
 			sshot=6;
 			System.out.println(sshot);
 		}
-		else if(a.getSource()==b6)
+		if(a.getSource()==b6)
 		{
 			System.exit(0);
 		}
-		else if(a.getSource()==b7)
+		if(a.getSource()==b7)
 		{
 			f1.setState(ICONIFIED);
 		}
-	}
-	public static void main(String[] args) throws IOException
-	{
-		// TODO Auto-generated method stub
-		new WWheal();
+		if(r1.isSelected())
+		{
+			psession=1;
+			System.out.println(psession);
+		}
+		if(r2.isSelected())
+		{
+			psession=2;
+			System.out.println(psession);
+		}
+		if(r3.isSelected())
+		{
+			psession=3;
+			System.out.println(psession);
+		}
+		if(r4.isSelected())
+		{
+			psession=4;
+			System.out.println(psession);
+		}
 	}
 	public static void mainui(JFrame f1)
 	{
@@ -169,6 +176,14 @@ public class WWheal extends JFrame implements MouseMotionListener,ActionListener
 		f2.getContentPane().add(r3);
 		f2.getContentPane().add(r4);
 		f2.getContentPane().add(l2);
+	}
+	public static void main(String[] args) throws IOException
+	{
+		// TODO Auto-generated method stub
+		new WWheal();
+	}
+	public void itemStateChanged(ItemEvent f) 
+	{
 	}
 	public void mouseDragged(MouseEvent e) 
 	{
