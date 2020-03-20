@@ -6,21 +6,33 @@ import java.io.*;
 public class WWheal extends JFrame implements MouseMotionListener,ActionListener,ItemListener
 {
 	static JFrame f1,f2;
-	static JLabel l1,l2;
+	static JLabel l1,l2,l3,l4,l5,l6;
 	static JButton b1,b2,b3,b4,b5,b6,b7;
-	static JRadioButton r1,r2,r3,r4;
-	static ButtonGroup rbg;
+	static JRadioButton r1,r2,r3,r4,r5,r6;
+	static ButtonGroup rbg1,rbg2;
+	static JComboBox cb1,cb2,cr1,cr2;
 	static GraphicsEnvironment ge;
 	static GraphicsDevice screen;
 	static Rectangle rect;
-	static int pid,psession,sshot,xscore,yscore,sx,sy;
-	static String pTeam=" ";
+	static int pid,psession,sshot,xscore,yscore,sx,sy,p1id,p2id,jop,x,y;
+	protected static String pteam=" ";
+	static String[] JOPB = {"Yes","No"};
 	protected static String playerlist[]=new String[10];
 	
 	public WWheal()
 	{
-		System.out.println(psession);
 		System.out.println("Started");
+		System.out.println();
+		playerlist[0]="A";
+		playerlist[1]="B";
+		playerlist[2]="C";
+		playerlist[3]="D";
+		playerlist[4]="E";
+		playerlist[5]="F";
+		playerlist[6]="G";
+		playerlist[7]="H";
+		playerlist[8]="I";
+		playerlist[9]="J";
 		ge=GraphicsEnvironment.getLocalGraphicsEnvironment();
 		screen=ge.getDefaultScreenDevice();
 		rect=screen.getDefaultConfiguration().getBounds();
@@ -39,30 +51,68 @@ public class WWheal extends JFrame implements MouseMotionListener,ActionListener
 		r2=new JRadioButton("RCG 1st");
 		r3=new JRadioButton("MCG 2nd");
 		r4=new JRadioButton("RCG 2nd");
-		rbg=new ButtonGroup();
-		rbg.add(r1);
-		rbg.add(r2);
-		rbg.add(r3);
-		rbg.add(r4);
+		r5=new JRadioButton();
+		r6=new JRadioButton();
+		rbg1=new ButtonGroup();
+		rbg2=new ButtonGroup();
+		cb1=new JComboBox(playerlist);
+		cb2=new JComboBox(playerlist);
+		cb1.setSelectedIndex(9);
+		cb2.setSelectedIndex(9);
+		rbg1.add(r1);
+		rbg1.add(r2);
+		rbg1.add(r3);
+		rbg1.add(r4);
+		rbg2.add(r5);
+		rbg2.add(r6);
 		l1=new JLabel();
 		l2=new JLabel("Plaese Select a Type");
+		l3=new JLabel("Select an Inning");
+		l4=new JLabel("Select 1st Player");
+		l5=new JLabel("Select 2nd Player");
+		l6=new JLabel("Select Active Player");
+		l6.setHorizontalAlignment(SwingConstants.CENTER);
+		l6.setFont(new Font("Century Gothic", Font.BOLD, 18));
+		l5.setHorizontalAlignment(SwingConstants.CENTER);
+		l5.setFont(new Font("Century Gothic", Font.BOLD, 18));
+		l4.setHorizontalAlignment(SwingConstants.CENTER);
+		l4.setFont(new Font("Century Gothic", Font.BOLD, 18));
+		l3.setHorizontalAlignment(SwingConstants.CENTER);
+		l3.setFont(new Font("Century Gothic", Font.BOLD, 18));
 		l1.setIcon(new ImageIcon(WWheal.class.getResource("/main/java/IMG/Ground.png")));
 		l2.setHorizontalAlignment(SwingConstants.CENTER);
-		l2.setFont(new Font("Century Gothic", Font.BOLD, 20));
+		l2.setFont(new Font("Century Gothic", Font.BOLD, 18));
 		l1.setAlignmentX(Component.CENTER_ALIGNMENT);
 		l1.setBounds(0,0,1920,1080);
-		l2.setBounds(59,24,266,50);
-		b1.setBounds(23,85,50,50);
-		b2.setBounds(95,85,50,50);
-		b3.setBounds(167,85,50,50);
-		b4.setBounds(239,85,50,50);
-		b5.setBounds(311,85,50,50);
+		l2.setBounds(69,255,266,25);
+		l3.setBounds(59,15,266,25);
+		l4.setBounds(21,95,160,25);
+		l5.setBounds(202,95,160,25);
+		l6.setBounds(92,175,200,25);
+		b1.setBounds(22,295,50,50);
+		b2.setBounds(94,295,50,50);
+		b3.setBounds(166,295,50,50);
+		b4.setBounds(238,295,50,50);
+		b5.setBounds(310,295,50,50);
 		b6.setBounds(1870,0,50,30);
 		b7.setBounds(1821,0,50,30);
-		r1.setBounds(19,205,72,50);
-		r2.setBounds(110,205,72,50);
-		r3.setBounds(201,205,72,50);
-		r4.setBounds(292,205,72,50);
+		r1.setBounds(12,55,80,25);
+		r2.setBounds(104,55,80,25);
+		r3.setBounds(196,55,80,25);
+		r4.setBounds(288,55,80,25);
+		r5.setBounds(48,215,150,25);
+		r6.setBounds(226,215,150,25);
+		cb1.setBounds(28,135,150,25);
+		cb2.setBounds(206,135,150,25);
+		b1.setEnabled(false);
+		b2.setEnabled(false);
+		b3.setEnabled(false);
+		b4.setEnabled(false);
+		b5.setEnabled(false);
+		cb1.setEnabled(false);
+		cb2.setEnabled(false);
+		r5.setEnabled(false);
+		r6.setEnabled(false);
 		b1.addActionListener(this);
 		b2.addActionListener(this);
 		b3.addActionListener(this);
@@ -74,6 +124,10 @@ public class WWheal extends JFrame implements MouseMotionListener,ActionListener
 		r2.addActionListener(this);
 		r3.addActionListener(this);
 		r4.addActionListener(this);
+		r5.addActionListener(this);
+		r6.addActionListener(this);
+		cb1.addActionListener(this);
+		cb2.addActionListener(this);
 		l1.addMouseListener(new MouseAdapter()
 		{
 			public void mousePressed(MouseEvent e)
@@ -81,8 +135,6 @@ public class WWheal extends JFrame implements MouseMotionListener,ActionListener
 				{
 					xscore=e.getX();
 					yscore=e.getY();
-					System.out.println("x : "+xscore);
-					System.out.println("Y : "+yscore);
 					selectui(f2);
 				}
 			}
@@ -91,61 +143,148 @@ public class WWheal extends JFrame implements MouseMotionListener,ActionListener
 		//selectui(f2);
 		mainui(f1);
 	}
-	
-	public void actionPerformed(ActionEvent a) 
+	public static void team()
+	{
+		if(psession==1)
+		{
+			pteam="MCG";
+		}
+		else if(psession==2)
+		{
+			pteam="RCG";
+		}
+		else if(psession==3)
+		{
+			pteam="MCG";
+		}
+		else if(psession==4)
+		{
+			pteam="RCG";
+		}
+	}
+	public static void adder()
+	{
+		System.out.println("+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+");
+		System.out.println();
+		System.out.println("Player ID : "+pid);
+		System.out.println("Player Team : "+pteam);
+		System.out.println("Session : "+psession);
+		System.out.println("Shot : "+sshot);
+		System.out.println("X : "+xscore);
+		System.out.println("y : "+yscore);
+		jop=JOptionPane.showOptionDialog(null,"Are You Sure To Insert This Data ?","Choose Your Option",JOptionPane.DEFAULT_OPTION,JOptionPane.WARNING_MESSAGE,null,JOPB,JOPB[0]);
+		if(jop==0)
+		{
+			try
+			{
+				main.java.httpRequestHandler.ReqHandler.addShot(pid,pteam,psession,sshot,xscore,yscore);
+			}
+			catch(IOException ex)
+			{
+				ex.printStackTrace();
+			}
+        }	
+	}
+	public static void arrayadder()
+	{
+		team();
+		cb1.setEnabled(true);
+		cb2.setEnabled(true);
+		try
+		{
+			main.java.httpRequestHandler.ReqHandler.players();
+		}
+		catch(IOException ex)
+		{
+			ex.printStackTrace();
+		}
+	}
+	public void actionPerformed(ActionEvent a)
 	{
 		if(a.getSource()==b1)
 		{
 			sshot=1;
-			System.out.println(sshot);
+			adder();
 		}
-		if(a.getSource()==b2)
+		else if(a.getSource()==b2)
 		{
 			sshot=2;
-			System.out.println(sshot);
+			adder();
 		}
-		if(a.getSource()==b3)
+		else if(a.getSource()==b3)
 		{
 			sshot=3;
-			System.out.println(sshot);
+			adder();
 		}
-		if(a.getSource()==b4)
+		else if(a.getSource()==b4)
 		{
 			sshot=4;
-			System.out.println(sshot);
+			adder();
 		}
-		if(a.getSource()==b5)
+		else if(a.getSource()==b5)
 		{
 			sshot=6;
-			System.out.println(sshot);
+			adder();
 		}
-		if(a.getSource()==b6)
+		else if(a.getSource()==b6)
 		{
 			System.exit(0);
 		}
-		if(a.getSource()==b7)
+		else if(a.getSource()==b7)
 		{
 			f1.setState(ICONIFIED);
 		}
 		if(r1.isSelected())
 		{
 			psession=1;
-			System.out.println(psession);
+			arrayadder();
 		}
-		if(r2.isSelected())
+		else if(r2.isSelected())
 		{
 			psession=2;
-			System.out.println(psession);
+			arrayadder();
 		}
-		if(r3.isSelected())
+		else if(r3.isSelected())
 		{
 			psession=3;
-			System.out.println(psession);
+			arrayadder();
 		}
-		if(r4.isSelected())
+		else if(r4.isSelected())
 		{
 			psession=4;
-			System.out.println(psession);
+			arrayadder();
+		}
+		if(r5.isSelected())
+		{
+			pid=p1id;
+			b1.setEnabled(true);
+			b2.setEnabled(true);
+			b3.setEnabled(true);
+			b4.setEnabled(true);
+			b5.setEnabled(true);
+		}
+		else if(r6.isSelected())
+		{
+			pid=p2id;
+			b1.setEnabled(true);
+			b2.setEnabled(true);
+			b3.setEnabled(true);
+			b4.setEnabled(true);
+			b5.setEnabled(true);
+		}
+		if(a.getSource()==cb1)
+		{
+			cr1=(JComboBox)a.getSource();
+			p1id=cr1.getSelectedIndex();
+			r5.setText(playerlist[p1id]);
+			r5.setEnabled(true);
+		}
+		if(a.getSource()==cb2)
+		{
+			cr2=(JComboBox)a.getSource();
+			p2id=cr2.getSelectedIndex();
+			r6.setText(playerlist[p2id]);
+			r6.setEnabled(true);
 		}
 	}
 	public static void mainui(JFrame f1)
@@ -175,7 +314,15 @@ public class WWheal extends JFrame implements MouseMotionListener,ActionListener
 		f2.getContentPane().add(r2);
 		f2.getContentPane().add(r3);
 		f2.getContentPane().add(r4);
+		f2.getContentPane().add(r5);
+		f2.getContentPane().add(r6);
+		f2.getContentPane().add(cb1);
+		f2.getContentPane().add(cb2);
 		f2.getContentPane().add(l2);
+		f2.getContentPane().add(l3);
+		f2.getContentPane().add(l4);
+		f2.getContentPane().add(l5);
+		f2.getContentPane().add(l6);
 	}
 	public static void main(String[] args) throws IOException
 	{
@@ -187,6 +334,9 @@ public class WWheal extends JFrame implements MouseMotionListener,ActionListener
 	}
 	public void mouseDragged(MouseEvent e) 
 	{
+		x=e.getXOnScreen();
+		y=e.getYOnScreen();
+		this.setLocation(x-xscore,y-yscore);
 	}
 	public void mouseMoved(MouseEvent e) 
 	{

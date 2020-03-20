@@ -6,7 +6,7 @@ import java.io.IOException;
 
 public class ReqHandler extends main.java.MCG.WWheal
 {
-	public static void addShot(int playerID, String playerTeam, int playerSession, int scoreShot, float scoreX, float scoreY) throws IOException 
+	public static void addShot(int playerID, String playerTeam, int playerSession, int scoreShot, int scoreX, int scoreY) throws IOException 
 	{
 
 		OkHttpClient client = new OkHttpClient().newBuilder()
@@ -33,12 +33,13 @@ public class ReqHandler extends main.java.MCG.WWheal
 		return response.body();
 	}
 	
-	public static void main(String[] args) throws IOException 
+	public static void players()throws IOException
 	{
+		/*
 		//Json get from the Response body
-		System.out.println("Main Array : "+ playerList("MCG").string());
+		System.out.println("Main Array : "+ playerList(pteam).string());
 		//Add Response body to the Json Array
-		JSONArray jarray=new JSONArray(playerList("MCG").string());
+		JSONArray jarray=new JSONArray(playerList(pteam).string());
 		//Iterate on jArray to get Each players Details
 		for (int i = 0; i <jarray.length() ; i++) 
 		{	
@@ -47,13 +48,18 @@ public class ReqHandler extends main.java.MCG.WWheal
 			//Print Each players Details get from the object
 			System.out.print(jsonObject.getInt("playerID"));
 			System.out.print("\t\t"+jsonObject.getString("playerName"));
-			
+				
 			playerlist[i]=jsonObject.getString("PlayerName");
-			
+					
 			System.out.println();			
 			//If you want you can create a Player Class and put all these details in to player type array list display those in the UI
 		}
-		addShot(1,"RCG", 1, 6, 100.0f, 20.5f);
-		String jsonObject=playerList("MCG").string();
+		//addShot(1,"RCG", 1, 6, 100, 20);
+		String jsonObject=playerList(pteam).string();
+		*/
+	}
+	public static void main(String[] args)
+	{
+		
 	}
 }
