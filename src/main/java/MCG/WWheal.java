@@ -235,27 +235,27 @@ public class WWheal extends JFrame implements MouseMotionListener,ActionListener
 		{
 			f1.setState(ICONIFIED);
 		}
-		if(r1.isSelected())
+		if(a.getSource()==r1)
 		{
 			psession=1;
 			arrayadder();
 		}
-		else if(r2.isSelected())
+		else if(a.getSource()==r2)
 		{
 			psession=2;
 			arrayadder();
 		}
-		else if(r3.isSelected())
+		else if(a.getSource()==r3)
 		{
 			psession=3;
 			arrayadder();
 		}
-		else if(r4.isSelected())
+		else if(a.getSource()==r4)
 		{
 			psession=4;
 			arrayadder();
 		}
-		if(r5.isSelected())
+		if(a.getSource()==r5)
 		{
 			pid=p1id;
 			b1.setEnabled(true);
@@ -264,7 +264,7 @@ public class WWheal extends JFrame implements MouseMotionListener,ActionListener
 			b4.setEnabled(true);
 			b5.setEnabled(true);
 		}
-		else if(r6.isSelected())
+		else if(a.getSource()==r6)
 		{
 			pid=p2id;
 			b1.setEnabled(true);
@@ -302,7 +302,7 @@ public class WWheal extends JFrame implements MouseMotionListener,ActionListener
 	{
 		f2.setVisible(true);
 		f2.setSize(400,400);
-		f2.setLocation((960-200),(540-400));
+		f2.setLocation(xscore,yscore);
 		f2.getContentPane().setLayout(null);
 		f2.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		f2.setTitle("Ball Type");
