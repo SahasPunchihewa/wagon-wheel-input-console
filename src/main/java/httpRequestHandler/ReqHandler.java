@@ -35,7 +35,6 @@ public class ReqHandler extends main.java.MCG.WWheal
 	
 	public static void players()throws IOException
 	{
-		/*
 		//Json get from the Response body
 		System.out.println("Main Array : "+ playerList(pteam).string());
 		//Add Response body to the Json Array
@@ -56,7 +55,6 @@ public class ReqHandler extends main.java.MCG.WWheal
 		}
 		//addShot(1,"RCG", 1, 6, 100, 20);
 		String jsonObject=playerList(pteam).string();
-		*/
 	}
 	public static void main(String[] args)
 	{

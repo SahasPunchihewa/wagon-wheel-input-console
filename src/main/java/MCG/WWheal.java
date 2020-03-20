@@ -183,6 +183,7 @@ public class WWheal extends JFrame implements MouseMotionListener,ActionListener
 			{
 				ex.printStackTrace();
 			}
+			f2.dispose();
         }	
 	}
 	public static void arrayadder()
