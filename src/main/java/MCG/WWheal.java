@@ -17,7 +17,7 @@ public class WWheal extends JFrame implements MouseMotionListener,ActionListener
 	static int pid,psession,sshot,xscore,yscore,sx,sy,p1id,p2id,jop,x,y;
 	protected static String pteam=" ";
 	static String[] JOPB = {"Yes","No"};
-	protected static String playerlist[]=new String[10];
+	protected static String playerlist[]=new String[11];
 	
 	public WWheal()
 	{
@@ -33,6 +33,7 @@ public class WWheal extends JFrame implements MouseMotionListener,ActionListener
 		playerlist[7]="H";
 		playerlist[8]="I";
 		playerlist[9]="J";
+		playerlist[10]="k";
 		ge=GraphicsEnvironment.getLocalGraphicsEnvironment();
 		screen=ge.getDefaultScreenDevice();
 		rect=screen.getDefaultConfiguration().getBounds();
@@ -55,10 +56,8 @@ public class WWheal extends JFrame implements MouseMotionListener,ActionListener
 		r6=new JRadioButton();
 		rbg1=new ButtonGroup();
 		rbg2=new ButtonGroup();
-		cb1=new JComboBox(playerlist);
-		cb2=new JComboBox(playerlist);
-		cb1.setSelectedIndex(9);
-		cb2.setSelectedIndex(9);
+		cb1=new JComboBox();
+		cb2=new JComboBox();
 		rbg1.add(r1);
 		rbg1.add(r2);
 		rbg1.add(r3);
@@ -188,6 +187,17 @@ public class WWheal extends JFrame implements MouseMotionListener,ActionListener
 	}
 	public static void arrayadder()
 	{
+		playerlist[0]="";
+		playerlist[1]="";
+		playerlist[2]="";
+		playerlist[3]="";
+		playerlist[4]="";
+		playerlist[5]="";
+		playerlist[6]="";
+		playerlist[7]="";
+		playerlist[8]="";
+		playerlist[9]="";
+		playerlist[9]="";
 		team();
 		cb1.setEnabled(true);
 		cb2.setEnabled(true);
@@ -199,6 +209,15 @@ public class WWheal extends JFrame implements MouseMotionListener,ActionListener
 		{
 			ex.printStackTrace();
 		}
+		for(int i=0;i<=10;i++)
+		{
+			cb1.addItem(playerlist[i]);
+			cb2.addItem(playerlist[i]);
+		}
+		//cb1.setSelectedIndex(10);
+		//cb2.setSelectedIndex(10);
+		cb1.revalidate();
+		cb2.revalidate();
 	}
 	public void actionPerformed(ActionEvent a)
 	{
