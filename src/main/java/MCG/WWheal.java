@@ -197,7 +197,7 @@ public class WWheal extends JFrame implements MouseMotionListener,ActionListener
 		playerlist[7]="";
 		playerlist[8]="";
 		playerlist[9]="";
-		playerlist[9]="";
+		playerlist[10]="";
 		team();
 		cb1.setEnabled(true);
 		cb2.setEnabled(true);
@@ -214,8 +214,6 @@ public class WWheal extends JFrame implements MouseMotionListener,ActionListener
 			cb1.addItem(playerlist[i]);
 			cb2.addItem(playerlist[i]);
 		}
-		//cb1.setSelectedIndex(10);
-		//cb2.setSelectedIndex(10);
 		cb1.revalidate();
 		cb2.revalidate();
 	}
